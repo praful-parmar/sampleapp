@@ -1,0 +1,5 @@
+flask
+mysqlclient
+flask_mysqldb
+wtforms
+passlib
