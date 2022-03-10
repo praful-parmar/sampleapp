@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - aws configure set region $region
+      - aws configure set aws_access_key_id $aws_access_key_id
+      - aws configure set aws_secret_access_key $aws_secret_access_key
+      - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com   
+  build:
+    on-failure: ABORT
+    commands:
+        - echo "hi"
+#       - docker build . -t $IMAGE_TAG
+#       - docker tag $IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com/test:$IMAGE_TAG
+  post_build:
+    on-failure: ABORT
+    commands:
+      - echo "hey"
+ #    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com/test:$IMAGE_TAG
+      - printf '[{"name":"test","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com/test:$IMAGE_TAG > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files: 
+    - 'image*.json'
+    - 'appspec.yaml'
+    - 'taskdef.json'
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imagedefinitions.json
