@@ -1,13 +1,13 @@
 version: 0.2
 
 phases:
-  pre_build:
-    on-failure: ABORT
-    commands:
-      - aws configure set region $region
-      - aws configure set aws_access_key_id $aws_access_key_id
-      - aws configure set aws_secret_access_key $aws_secret_access_key
-      - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com   
+#   pre_build:
+#     on-failure: ABORT
+#     commands:
+#       - aws configure set region $region
+#       - aws configure set aws_access_key_id $aws_access_key_id
+#       - aws configure set aws_secret_access_key $aws_secret_access_key
+#       - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com   
   build:
     on-failure: ABORT
     commands:
