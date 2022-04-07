@@ -9,9 +9,10 @@
         }
       ],
       "image": "nginx:latest",
-      "name": "test"
+      "name": "nginx"
     }
   ],
+  "cpu": "256",
   "memory": "256",
   "family": "nginx"
 }
