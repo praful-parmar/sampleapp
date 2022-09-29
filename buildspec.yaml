@@ -24,12 +24,12 @@ phases:
 artifacts:
   files: 
     - 'image*.json'
-    - 'appspec.yaml'
+    - 'appspec-test.yaml'
     - 'taskdef.json'
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.yaml
+        - appspec-test.yaml
         - taskdef.json
     ImageArtifact:
       files:
