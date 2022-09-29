@@ -13,5 +13,6 @@
     }
   ],
   "cpu": "256",
-  "memory": "256"
+  "memory": "256",
+  "family": "nginx"
 }
