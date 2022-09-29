@@ -9,7 +9,7 @@
         }
       ],
       "image": "nginx:latest",
-      "name": "test"
+      "name": "nginx"
     }
   ],
   "cpu": "256",
