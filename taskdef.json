@@ -8,11 +8,10 @@
           "containerPort": 80
         }
       ],
+      "memory": 128,
       "image": "nginx:latest",
       "name": "nginx"
     }
   ],
-  "cpu": "256",
-  "memory": "256",
   "family": "test"
 }
