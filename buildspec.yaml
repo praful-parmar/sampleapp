@@ -19,7 +19,8 @@ phases:
     commands:
       - echo "hey"
  #    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$region.amazonaws.com/test:$IMAGE_TAG
-      - printf '{"imageUri":"%s"}' nginx:latest > imagedefinitions-test.json
+     # - printf '{"imageUri":"%s"}' nginx:latest > imagedefinitions-test.json
+      - printf '[{"name":"nginx","imageUri":"%s"}]' nginx:latest > imagedefinitions-test.json
       - cat imagedefinitions-test.json
 artifacts:
   files: 
