@@ -5,6 +5,10 @@ on:
   push:
     branches: [ main ]
 
+env:
+  
+  AWS_REGION : <"us-east-1">
+
 permissions:
   id-token: write
   contents: read
@@ -22,7 +26,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::847137928610:role/GitHubAction-AssumeRoleWithAction
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: us-east-1
+          aws-region: ${{ env.AWS_REGION }}
       - name: Sts GetCallerIdentity
         run: |
           aws sts get-caller-identity
